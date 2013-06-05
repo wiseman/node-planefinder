@@ -1,0 +1,40 @@
+{
+  "name": "planefinder",
+  "version": "0.0.1",
+  "description": "Connects to planefinder.net and parses JSON containing aircraft location information.",
+  "main": "./index.js",
+  "dependencies": {
+    "geolib": "git+ssh://git@github.com:wiseman/Geolib.git#boundingbox"
+  },
+  "devDependencies": {
+    "tap": "~0.4.0"
+  },
+  "scripts": {
+    "test": "tap ./test/*.js"
+  },
+  "bin": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/wiseman/node-planefinder.git"
+  },
+  "keywords": [
+    "ads-b",
+    "faa"
+    "aircraft",
+    "aviation",
+    "mode s",
+    "planefinder",
+    "flightradar24",
+    "radar"
+  ],
+  "author": {
+    "name": "John Wiseman",
+    "email": "jjwiseman@gmail/com",
+    "url": "http://lemondronor.com"
+  },
+  "license": "MIT/X11",
+  "engine": {
+    "node": ">=0.4"
+  }
+}
