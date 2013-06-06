@@ -16,6 +16,11 @@ exports.createClient = function(options) {
   return client;
 }
 
+// Options:
+//   bounds (required): Array of points defining bounding box of
+//     interest.
+//   faa: Show FAA-reported flights?
+//   interval: Refresh interval (in milliseconds).
 exports.Client = function(options) {
   events.EventEmitter.call(this);
   var options = options || {};
