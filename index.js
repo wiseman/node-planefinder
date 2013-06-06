@@ -6,14 +6,17 @@
 
 var events = require('events');
 var http = require('http');
+var url = require('url');
 var util = require('util');
 
+var planefinder = exports;
 
 exports.createClient = function(options) {
-  return new Client(options);
+  var client = new planefinder.Client(options);
+  return client;
 }
 
-var Client = function(options) {
+exports.Client = function(options) {
   events.EventEmitter.call(this);
   var options = options || {};
   this.faa = options.faa !== undefined ? options.faa : true;
@@ -23,40 +26,50 @@ var Client = function(options) {
   }
   this.interval = options.interval || 20000;
 };
+util.inherits(exports.Client, events.EventEmitter);
 
-Client.prototype.resume = function() {
+exports.Client.prototype.resume = function() {
   this.startRequest();
   setInterval(this.startRequest.bind(this), this.interval);
 };
 
-Client.prototype.url = function() {
+exports.Client.prototype.url = function() {
+  var bounds = [this.bounds[0].latitude,
+                this.bounds[0].longitude,
+                this.bounds[1].latitude,
+                this.bounds[1].longitude];
   var url = ('http://planefinder.net/endpoints/update.php?' +
              'faa=' + (this.faa ? '1' : '0') +
-             '&bounds=' + encodeURIComponent(this.bounds.join(',')));
+             '&bounds=' + encodeURIComponent(bounds.join(',')));
   return url;
 };
 
-Client.prototype.startRequest = function() {
-  var req = http.get(this.url(), this._handleResponse.bind(this));
+exports.Client.prototype.startRequest = function() {
+  this.body = '';
+  var options = url.parse(this.url());
+  options.headers = {
+    'X-Requested-With': 'XMLHttpRequest'
+  };
+  var req = http.get(options, this._handleResponse.bind(this));
   req.on('error', this._emitError.bind(this));
 };
 
-Client.prototype._handleResponse = function(res) {
+exports.Client.prototype._handleResponse = function(res) {
   res.on('data', this._handleResponseData.bind(this));
   res.on('end', this._handleResponseEnd.bind(this));
   res.on('error', this._emitError.bind(this));
 };
 
-Client.prototype._handleResponseData = function(chunk) {
+exports.Client.prototype._handleResponseData = function(chunk) {
   this.body += chunk;
 };
 
-Client.prototype._handleResponseEnd = function() {
-  var traffic = parseJson(this.body);
+exports.Client.prototype._handleResponseEnd = function() {
+  var traffic = planefinder.parseJson(this.body);
   this.emit('data', traffic);
 };
 
-Client.prototype._emitError = function(err) {
+exports.Client.prototype._emitError = function(err) {
   this.emit('error', err);
 };
 
