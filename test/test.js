@@ -31,7 +31,13 @@ test('Parsing JSON', function(t) {
 
 
 test('Creating client', function(t) {
-  var client = planefinder.createClient();
-  t.ok(client);
+  t.throws(
+    function() {
+      var client = planefinder.createClient();
+    },
+    {
+      name: 'Error',
+      message: 'Must specify bounds in options.'
+    });
   t.end();
 });

@@ -18,6 +18,9 @@ var Client = function(options) {
   var options = options || {};
   this.faa = options.faa !== undefined ? options.faa : true;
   this.bounds = options.bounds;
+  if (!this.bounds) {
+    throw new Error('Must specify bounds in options.');
+  }
   this.interval = options.interval || 20000;
 };
 
