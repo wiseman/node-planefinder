@@ -10,7 +10,7 @@
     "tap": "~0.4.0"
   },
   "scripts": {
-    "test": "tap ./test/*.js"
+    "test": "tap --stderr ./test/*.js"
   },
   "bin": {
   },
@@ -20,7 +20,7 @@
   },
   "keywords": [
     "ads-b",
-    "faa"
+    "faa",
     "aircraft",
     "aviation",
     "mode s",

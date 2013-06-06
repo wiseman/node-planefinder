@@ -49,7 +49,7 @@ Client.prototype._handleResponseData = function(chunk) {
 };
 
 Client.prototype._handleResponseEnd = function() {
-  var traffic = this.parseJson(this.body);
+  var traffic = parseJson(this.body);
   this.emit('data', traffic);
 };
 
@@ -57,21 +57,25 @@ Client.prototype._emitError = function(err) {
   this.emit('error', err);
 };
 
-Client.prototype.parseJson = function(reportsJson) {
+
+exports.parseJson = function(reportsJson) {
   planes = JSON.parse(reportsJson).planes;
-  traffic = {};
-  for (var hex_ident in planes) {
-    var plane = planes[hex_ident];
-    var aircraft = {
-      hex_ident: hex_ident,
-      callsign: plane[10],
-      lat: plane[3],
-      lon: plane[4],
-      altitude: plane[5],
-      track: plane[6],
-      ground_speed: plane[7]
-    };
-    traffic[hex_ident] = aircraft;
+  traffic = [];
+  for (var i = 0; i < planes.length; i++) {
+    var planeMap = planes[i];
+    for (var hex_ident in planeMap) {
+      var plane = planeMap[hex_ident];
+      var aircraft = {
+        hex_ident: hex_ident,
+        callsign: plane[10],
+        lat: plane[3],
+        lon: plane[4],
+        altitude: plane[5],
+        track: plane[6],
+        ground_speed: plane[7]
+      };
+      traffic.push(aircraft);
+    }
   }
   return traffic
-}
+};
