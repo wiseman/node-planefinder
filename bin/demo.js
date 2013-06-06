@@ -1,6 +1,8 @@
 planefinder = require('../index');
 geolib = require('geolib');
 
+// Let's observe planes within 10 km of LAX airport.
+
 var laxCoords = {
   latitude: 33.9471,
   longitude: -118.4082
