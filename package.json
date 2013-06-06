@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "tap": "~0.4.0",
-    "geolib": "git+ssh://git@github.com:wiseman/Geolib.git#boundingbox"
+    "geolib": "git://github.com/wiseman/Geolib.git#boundingbox"
   },
   "scripts": {
     "test": "tap --stderr ./test/*.js"
