@@ -28,3 +28,10 @@ test('Parsing JSON', function(t) {
   t.equal(p2.ground_speed, 0);
   t.end();
 });
+
+
+test('Creating client', function(t) {
+  var client = planefinder.createClient();
+  t.ok(client);
+  t.end();
+});
