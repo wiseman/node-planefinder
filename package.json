@@ -16,19 +16,21 @@
     "type": "git",
     "url": "http://github.com/wiseman/node-planefinder.git"
   },
+  "bugs": "https://github.com/wiseman/node-planefinder/issues",
   "keywords": [
     "ads-b",
-    "faa",
     "aircraft",
     "aviation",
+    "faa",
+    "flightradar24",
     "mode s",
     "planefinder",
-    "flightradar24",
+    "planespotting"
     "radar"
   ],
   "author": {
     "name": "John Wiseman",
-    "email": "jjwiseman@gmail/com",
+    "email": "jjwiseman@gmail.com",
     "url": "http://lemondronor.com"
   },
   "license": "MIT/X11",
