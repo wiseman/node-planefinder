@@ -1,10 +1,9 @@
 {
   "name": "planefinder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Connects to planefinder.net and parses JSON containing aircraft location information.",
   "main": "./index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "tap": "~0.4.0",
     "geolib": "~1.3.1"
@@ -12,8 +11,7 @@
   "scripts": {
     "test": "tap --stderr ./test/*.js"
   },
-  "bin": {
-  },
+  "bin": {},
   "repository": {
     "type": "git",
     "url": "http://github.com/wiseman/node-planefinder.git"
