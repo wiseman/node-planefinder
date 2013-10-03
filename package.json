@@ -1,7 +1,8 @@
 {
   "name": "planefinder",
-  "version": "0.0.2",
   "description": "Connects to planefinder.net and parses JSON containing aircraft location information.",
+  "author": "John Wiseman <jjwiseman@gmail.com> (http://lemondronor.com)"
+  "version": "0.0.2",
   "main": "./index.js",
   "dependencies": {},
   "devDependencies": {
@@ -28,11 +29,6 @@
     "planespotting"
     "radar"
   ],
-  "author": {
-    "name": "John Wiseman",
-    "email": "jjwiseman@gmail.com",
-    "url": "http://lemondronor.com"
-  },
   "license": "MIT/X11",
   "engine": {
     "node": ">=0.4"
