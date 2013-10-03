@@ -9,6 +9,7 @@ from planefinder.net.
 See the example in `bin/demo.js`.
 
 ```
+$ npm install
 $ node bin/demo.js
 [ { hex_ident: '3C4A88',
     callsign: 'LH451',
