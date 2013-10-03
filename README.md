@@ -6,9 +6,35 @@ from planefinder.net.
 
 [![build status](https://secure.travis-ci.org/wiseman/node-planefinder.png)](http://travis-ci.org/wiseman/node-planefinder)
 
-See the example in `bin/demo.js`.
+Here's an example of how to use the library to track aircraft (this
+code is available in `bin/demo.js`):
 
+```javascript
+planefinder = require('planefinder');
+geolib = require('geolib');
+
+// Let's observe planes within 10 km of LAX airport.
+
+var laxCoords = {
+  latitude: 33.9471,
+  longitude: -118.4082
+};
+var maxDistance = 10000;  // meters
+
+var bounds = geolib.getBoundsOfDistance(laxCoords, maxDistance);
+
+var client = planefinder.createClient({
+  bounds: bounds
+});
+client.on('data', function(traffic) {
+  console.log(traffic);
+});
+client.resume();
 ```
+
+And here's what the output looks like:
+
+```bash
 $ npm install
 $ node bin/demo.js
 [ { hex_ident: '3C4A88',
