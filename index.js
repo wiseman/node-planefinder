@@ -14,7 +14,7 @@ var planefinder = exports;
 exports.createClient = function(options) {
   var client = new planefinder.Client(options);
   return client;
-}
+};
 
 // Options:
 //   bounds (required): Array of points defining bounding box of
@@ -23,7 +23,7 @@ exports.createClient = function(options) {
 //   interval: Refresh interval (in milliseconds).
 exports.Client = function(options) {
   events.EventEmitter.call(this);
-  var options = options || {};
+  options = options || {};
   this.faa = options.faa !== undefined ? options.faa : true;
   this.bounds = options.bounds;
   if (!this.bounds) {
@@ -80,8 +80,8 @@ exports.Client.prototype._emitError = function(err) {
 
 
 exports.parseJson = function(reportsJson) {
-  planes = JSON.parse(reportsJson).planes;
-  traffic = [];
+  var planes = JSON.parse(reportsJson).planes;
+  var traffic = [];
   for (var i = 0; i < planes.length; i++) {
     var planeMap = planes[i];
     for (var hex_ident in planeMap) {
@@ -98,5 +98,5 @@ exports.parseJson = function(reportsJson) {
       traffic.push(aircraft);
     }
   }
-  return traffic
+  return traffic;
 };
