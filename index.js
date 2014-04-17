@@ -88,7 +88,9 @@ exports.parseJson = function(reportsJson) {
       var plane = planeMap[hex_ident];
       var aircraft = {
         hex_ident: hex_ident,
-        callsign: plane[10],
+        callsign: plane[10], // flight number when active
+        journey: plane[11] || plane[10], // journey is set in callsign when flight is inactive
+        aircraft: plane[0],
         lat: plane[3],
         lon: plane[4],
         altitude: plane[5],
