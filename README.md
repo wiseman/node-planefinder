@@ -4,7 +4,7 @@ node-planefinder
 This is a node.js module that can get aircraft location information
 from planefinder.net.
 
-_This library no longer works--planefinder have begun obfuscating their unofficial API data.  See issue #4._
+*This library no longer works--planefinder have begun obfuscating their unofficial API data.  See issue #4.*
 
 [![build status](https://secure.travis-ci.org/wiseman/node-planefinder.png)](http://travis-ci.org/wiseman/node-planefinder)
 
