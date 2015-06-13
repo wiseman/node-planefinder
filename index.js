@@ -80,7 +80,11 @@ exports.Client.prototype._emitError = function(err) {
 
 
 exports.parseJson = function(reportsJson) {
-  var planes = JSON.parse(reportsJson).planes;
+  var planes = [];
+  try {
+    planes = JSON.parse(reportsJson).planes;
+  }
+  catch (e) {}  
   var traffic = [];
   for (var i = 0; i < planes.length; i++) {
     var planeMap = planes[i];
